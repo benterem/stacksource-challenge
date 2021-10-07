@@ -5,10 +5,27 @@ const app = express()
 // Object is essentially hash table in JS has o(1) to check if exists
 const zipCodes = {}
 
+// function to format zipcode strings
+const formatZips = (arr) => {
+  let res = ''
+  
+  for(let i = 0; i < arr.length; i++){
+    if(i > 0 && arr[i] === arr[i - 1] + 1){
+      if(res.charAt(res.length - 6) === '-'){
+        res =  res.substring(0, res.length - 5) + arr[i] 
+      } else {
+        res = res + `-${arr[i]}`
+      }
+    } else {
+      res = res + ` ${arr[i]}`
+    }
+  }
+  return res
+}
+
 
 app.get('/display', (request, response) => {
-  const zip = Number(request.params.id)
-  response.status(200).send(zipCodes)
+  response.status(200).send(formatZips(Object.values(zipCodes)))
 })
 
 app.get('/has/:id', (request, response) => {
