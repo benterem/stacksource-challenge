@@ -1,4 +1,4 @@
-const express = resquire('express')
+const express = require('express')
 const app = express()
 
 app.post('/insert/:id', (request, response) => {
