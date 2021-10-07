@@ -20,7 +20,7 @@ const formatZips = (arr) => {
       res = res + ` ${arr[i]}`
     }
   }
-  return res
+  return res.split(' ').join(', ')
 }
 
 
