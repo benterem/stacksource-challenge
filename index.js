@@ -19,10 +19,14 @@ app.get('/has/:id', (request, response) => {
 app.post('/insert/:id', (request, response) => {
   const zip = Number(request.params.id)
   zipCodes[zip] = zip
-  response.status(201).send(`Zip code ${zip} inserted`)
+  response.status(201).send(`Zip code ${zip} inserted.`)
 })
 
-
+app.delete('/delete/:id', (request, response) => {
+  const zip = Number(request.params.id)
+  delete zipCodes[zip]
+  response.status(204).send(`Zip code ${zip} deleted.`)
+})
 
 const PORT = 3000
 app.listen(PORT, () => {
