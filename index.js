@@ -25,7 +25,7 @@ app.post('/insert/:id', (request, response) => {
 app.delete('/delete/:id', (request, response) => {
   const zip = Number(request.params.id)
   delete zipCodes[zip]
-  response.status(204).send(`Zip code ${zip} deleted.`)
+  response.status(200).send(`Zip code ${zip} deleted.`)
 })
 
 const PORT = 3000
